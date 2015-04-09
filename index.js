@@ -58,4 +58,5 @@ StableInterval.prototype.clear = function() {
   if (!this.worker) return;
   this.worker.postMessage(void 0);
   this.worker.terminate();
+  this.worker = null;
 };
