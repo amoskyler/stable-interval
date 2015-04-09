@@ -57,5 +57,5 @@ StableInterval.prototype.set = function(fn, ms) {
 StableInterval.prototype.clear = function() {
   if (!this.worker) return;
   this.worker.postMessage(void 0);
-  this.worker = null;
+  this.worker.terminate();
 };
