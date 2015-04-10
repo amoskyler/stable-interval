@@ -46,7 +46,7 @@ function StableInterval() {
 StableInterval.prototype.set = function(fn, ms) {
   if (this.worker) throw new Error('callback is already registered.');
   this.worker = new Worker(interval);
-  this.worker.onmessage = fn;
+  this.worker.onmessage = function(){ fn(); this.clear(); }.bind(this);
   this.worker.postMessage(ms);
 };
 
